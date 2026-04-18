@@ -142,7 +142,6 @@ messages:
   villager_shop_not_found: "&cBoutique de villageois introuvable ! Utilisez l'auto-complétion pour voir les boutiques disponibles."
 
   spawn_usage: "&cUtilisation : &e/vm spawn <all|id>"
-  spawn_usage_help: "&7Utilisez 'all' pour faire apparaître tous les villageois manquants, ou spécifiez un ID de boutique"
   spawn_villagers_spawned: "&a%count% villageois%plural% ont été généré(s)."
   spawn_villagers_failed: "&cÉchec de génération de &e%count% &cvillageois%plural%."
   spawn_all_exist: "&7Tous les villageois existent déjà."

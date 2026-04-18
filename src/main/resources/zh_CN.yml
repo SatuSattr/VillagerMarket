@@ -139,7 +139,6 @@ messages:
   villager_shop_not_found: "&c未找到村民商店！使用Tab补全查看可用商店。"
 
   spawn_usage: "&c用法: &e/vm spawn <all|id>"
-  spawn_usage_help: "&7使用 'all' 生成所有缺失的村民，或指定商店ID"
   spawn_villagers_spawned: "&a已生成 &e%count% &a个村民。"
   spawn_villagers_failed: "&c生成 &e%count% &c个村民失败。"
   spawn_all_exist: "&7所有村民都已存在。"

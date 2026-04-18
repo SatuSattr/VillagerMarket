@@ -139,7 +139,6 @@ messages:
   villager_shop_not_found: "&c¡Tienda de aldeano no encontrada! Usa el autocompletado para ver las tiendas disponibles."
 
   spawn_usage: "&cUso: &e/vm spawn <all|id>"
-  spawn_usage_help: "&7Usa 'all' para generar todos los aldeanos faltantes o especifica un ID de tienda"
   spawn_villagers_spawned: "&aSe han generado &e%count% &aaldeano%plural%."
   spawn_villagers_failed: "&cNo se han podido generar &e%count% &caldeano%plural%."
   spawn_all_exist: "&7Todos los aldeanos ya existen."

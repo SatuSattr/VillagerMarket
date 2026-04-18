@@ -87,7 +87,7 @@ public class ListCommand implements ISubCommand {
 
     @Override
     public String getDescription() {
-        return "List all villager shops: &6/vm list";
+        return "List all villager shops";
     }
 
     @Override
@@ -95,8 +95,4 @@ public class ListCommand implements ISubCommand {
         return "";
     }
 
-    @Override
-    public boolean requirePermission() {
-        return true;
-    }
 }

@@ -84,7 +84,7 @@ public class TeleportCommand implements ISubCommand {
 
     @Override
     public String getDescription() {
-        return "Teleport to shop: &6/vm teleport <id>";
+        return "Teleport to shop";
     }
 
     @Override
@@ -92,8 +92,4 @@ public class TeleportCommand implements ISubCommand {
         return "<id>";
     }
 
-    @Override
-    public boolean requirePermission() {
-        return true;
-    }
 }

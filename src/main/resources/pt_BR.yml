@@ -139,7 +139,6 @@ messages:
   villager_shop_not_found: "&cLoja de aldeão não encontrada! Use o autocompletar para ver as lojas disponíveis."
 
   spawn_usage: "&cUso: &e/vm spawn <all|id>"
-  spawn_usage_help: "&7Use 'all' para gerar todos os aldeões ausentes, ou especifique um ID da loja"
   spawn_villagers_spawned: "&a%count% aldeã%plural% gerado%plural%."
   spawn_villagers_failed: "&cFalha ao gerar %count% aldeã%plural%."
   spawn_all_exist: "&7Todos os aldeões já existem."

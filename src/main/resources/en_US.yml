@@ -139,7 +139,6 @@ messages:
   villager_shop_not_found: "&cVillager shop not found! Use tab completion to see available shops."
 
   spawn_usage: "&cUsage: &e/vm spawn <all|id>"
-  spawn_usage_help: "&7Use 'all' to spawn all missing villagers, or specify a shop ID"
   spawn_villagers_spawned: "&aSpawned &e%count% &avillager%plural%."
   spawn_villagers_failed: "&cFailed to spawn &e%count% &cvillager%plural%."
   spawn_all_exist: "&7All villagers already exist."

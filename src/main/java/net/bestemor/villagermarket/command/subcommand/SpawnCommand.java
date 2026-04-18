@@ -55,7 +55,6 @@ public class SpawnCommand implements ISubCommand {
 
         if (args.length < 2) {
             player.sendMessage(ConfigManager.getMessage("messages.spawn_usage"));
-            player.sendMessage(ConfigManager.getMessage("messages.spawn_usage_help"));
             return;
         }
 
@@ -186,7 +185,7 @@ public class SpawnCommand implements ISubCommand {
 
     @Override
     public String getDescription() {
-        return "Spawn missing villagers: &6/vm spawn <all|id>";
+        return "Spawn missing villagers";
     }
 
     @Override
@@ -194,8 +193,4 @@ public class SpawnCommand implements ISubCommand {
         return "<all|id>";
     }
 
-    @Override
-    public boolean requirePermission() {
-        return true;
-    }
 }
