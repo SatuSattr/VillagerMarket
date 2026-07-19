@@ -354,6 +354,7 @@ public class Shopfront {
                         if (shopItem == null) {
                             return;
                         }
+                        VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                         ItemMode mode = shopItem.getMode();
                         if (mode == ItemMode.BUY_AND_SELL || shopItem.isAllowCustomAmount()) {
                             mode = mode == ItemMode.BUY_AND_SELL ? ItemMode.BUY : mode;
