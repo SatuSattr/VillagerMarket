@@ -120,6 +120,7 @@ messages:
   #Placeholders: %shop%
   movehere_success: "&a村民商店 &b%shop% &a已被移动到你的位置."
   movehere_usage: "&c用法: &e/vm movehere <id>"
+  edit_usage: "&c用法: &e/vm edit <uuid>"
   movehere_entity_not_found: "&c无法在世界中找到该村民实体. 它可能未被加载."
   set_size: "&7右键点击你想要设置大小的&b村民商店&7."
   size_set: "&a商店大小已设置为 &e%size%&a."

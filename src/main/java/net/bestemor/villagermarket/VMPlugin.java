@@ -122,6 +122,7 @@ public class VMPlugin extends CorePlugin {
                 .addSubCommand("toggleperm", new ToggleRequirePermissionCommand(this))
                 .addSubCommand("open", new OpenCommand(this))
                 .addSubCommand("movehere", new MoveHereCommand(this))
+                .addSubCommand("edit", new EditCommand(this))
                 .permissionPrefix("villagermarket.command")
                 .build();
 

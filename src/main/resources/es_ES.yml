@@ -120,6 +120,7 @@ messages:
   #Placeholders: %shop%
   movehere_success: "&aLa Villager Shop &b%shop% &aha sido movida a tu ubicación."
   movehere_usage: "&cUso: &e/vm movehere <id>"
+  edit_usage: "&cUso: &e/vm edit <uuid>"
   movehere_entity_not_found: "&cNo se pudo encontrar la entidad Villager en el mundo. Puede que no esté cargada."
   set_size: "&7Haga clic con el botón derecho en la &bVillager Shop &7en la que desee establecer el tamaño."
   size_set: "&aTamaño establecido a &e%size%&a."

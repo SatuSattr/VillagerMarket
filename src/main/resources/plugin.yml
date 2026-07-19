@@ -51,6 +51,7 @@ permissions:
       villagermarket.command.list: true
       villagermarket.command.teleport: true
       villagermarket.command.movehere: true
+      villagermarket.command.edit: true
       villagermarket.command.spawn: true
       villagermarket.spy: true
       villagermarket.rename: true
@@ -85,6 +86,9 @@ permissions:
   villagermarket.command.movehere:
     default: op
     description: Move a Villager Shop to your current location
+  villagermarket.command.edit:
+    default: op
+    description: Open the edit menu for any villager shop via command
   villagermarket.command.reload:
     default: op
     description: Reload Villager Market
