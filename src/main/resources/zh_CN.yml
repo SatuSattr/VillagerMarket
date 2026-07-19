@@ -65,6 +65,8 @@ messages:
   sold_item_as_owner: "&b%player%&7 从你的商店购买了 &b%amount% 个 %item%&7, 花费了 &a%price%&7."
   change_name: "&b请在聊天栏中输入商店的名称..."
   change_name_set: "&a成功将商店名称设置为了: &r%name%&a."
+  change_shopfront_title: "&b请在聊天栏中输入商店前台标题..."
+  change_shopfront_title_set: "&a成功将商店前台标题设置为: &r%title%&a."
   must_be_menulore: "&c请切换为 &e&n菜单描述&c 来交易物品!"
   cannot_buy_from_yourself: "&c你不能向自己购买物品!"
   cannot_sell_to_yourself: "&c你不能向自己出售物品!"
@@ -268,6 +270,14 @@ menus:
         name: "&e编辑名称"
         lore:
           - "&7点击修改村民的名称"
+      #Change shopfront title item (admin shop only)
+      change_shopfront_title:
+        material: NAME_TAG
+        slot: 31
+        name: "&e修改商店前台标题"
+        lore:
+          - "&7点击修改此商店前台"
+          - "&7的箱子标题"
       #出售 shop item
       sell_shop:
         material: FEATHER

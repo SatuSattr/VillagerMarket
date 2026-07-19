@@ -145,6 +145,19 @@ public class EditShopMenu extends Menu {
             });
         }));
 
+        if (shop instanceof AdminShop) {
+            content.setClickable(ConfigManager.getInt("menus.edit_shop.items.change_shopfront_title.slot"), Clickable.fromConfig("menus.edit_shop.items.change_shopfront_title", event -> {
+                Player player = (Player) event.getWhoClicked();
+                event.getView().close();
+                player.sendMessage(ConfigManager.getMessage("messages.change_shopfront_title"));
+                plugin.getChatListener().addStringListener(player, (result) -> {
+                    String title = ChatColor.translateAlternateColorCodes('&', result);
+                    Bukkit.getScheduler().runTask(plugin, () -> shop.setShopfrontTitle(title));
+                    player.sendMessage(ConfigManager.getMessage("messages.change_shopfront_title_set").replace("%title%", title));
+                });
+            }));
+        }
+
         if (shop instanceof PlayerShop playerShop) {
 
             content.setPlaced(PlacedClickable.fromConfig("menus.edit_shop.items.sell_shop", event -> {

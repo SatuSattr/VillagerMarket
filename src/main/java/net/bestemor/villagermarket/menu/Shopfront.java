@@ -150,7 +150,7 @@ public class Shopfront {
                 ? "menus.shopfront.title_multipage"
                 : "menus.shopfront.title";
         String customerTitle = ConfigManager.getString(key)
-                .replace("%shop%", shop.getShopName())
+                .replace("%shop%", shop.getShopfrontTitle())
                 .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()))
                 .replace("%page%", String.valueOf(page + 1))
                 .replace("%total%", String.valueOf(holder.getSize()));

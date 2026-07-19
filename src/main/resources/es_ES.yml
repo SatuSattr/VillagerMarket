@@ -65,6 +65,8 @@ messages:
   sold_item_as_owner: "&b%player%&7 te compró &b%amount%x %item%&7 por &a%price%&7."
   change_name: "&bPor favor escribe el nombre de la tienda en el chat..."
   change_name_set: "&aNombre establecido correctamente a: &r%name%&a."
+  change_shopfront_title: "&bPor favor escribe el título del shopfront en el chat..."
+  change_shopfront_title_set: "&aTítulo establecido correctamente a: &r%title%&a."
   must_be_menulore: "&cVuelve a &e&nmenu lore&c para vender/comprar items!"
   cannot_buy_from_yourself: "&cNo puedes comprarte items a ti mismo!"
   cannot_sell_to_yourself: "&cNo puedes venderte items a ti mismo!"
@@ -271,6 +273,14 @@ menus:
         name: "&eCambiar el nombre del aldeano"
         lore:
           - "&7Haz clic para editar el nombre"
+      #Change shopfront title item (admin shop only)
+      change_shopfront_title:
+        material: NAME_TAG
+        slot: 31
+        name: "&eCambiar título del shopfront"
+        lore:
+          - "&7Clic para cambiar el título del cofre"
+          - "&7de este shopfront"
       #Sell shop item
       sell_shop:
         material: FEATHER

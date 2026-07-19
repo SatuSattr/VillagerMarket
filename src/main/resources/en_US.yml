@@ -65,6 +65,8 @@ messages:
   sold_item_as_owner: "&b%player%&7 bought &b%amount%x %item%&7 from you for &a%price%&7."
   change_name: "&bPlease type the shop name in the chat..."
   change_name_set: "&aSuccessfully set name to: &r%name%&a."
+  change_shopfront_title: "&bPlease type the shopfront title in the chat..."
+  change_shopfront_title_set: "&aSuccessfully set shopfront title to: &r%title%&a."
   must_be_menulore: "&cPlease toggle back to &e&nmenu lore&c to sell/buy items!"
   cannot_buy_from_yourself: "&cYou can not buy items from yourself!"
   cannot_sell_to_yourself: "&cYou can not sell items to yourself!"
@@ -271,6 +273,14 @@ menus:
         name: "&eChange villager name"
         lore:
           - "&7Click to change the name of your villager"
+      #Change shopfront title item (admin shop only)
+      change_shopfront_title:
+        material: NAME_TAG
+        slot: 31
+        name: "&eChange shopfront title"
+        lore:
+          - "&7Click to change the chest title"
+          - "&7of this shopfront"
       #Sell shop item
       sell_shop:
         material: FEATHER

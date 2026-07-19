@@ -65,6 +65,8 @@ messages:
   sold_item_as_owner: '&b%player%&7 kaufte &b%amount%x %item%&7 von dir für &a%price%&7.'
   change_name: '&bGebe den Shop-Namen im Chat ein...'
   change_name_set: '&aNamen erfolgreich festgelegt auf: &r%name%&a.'
+  change_shopfront_title: '&bGebe den Shopfront-Titel im Chat ein...'
+  change_shopfront_title_set: '&aTitel erfolgreich festgelegt auf: &r%title%&a.'
   must_be_menulore: '&cBitte schalte das Menü zurück, um Gegenstände zu verkaufen/kaufen!'
   cannot_buy_from_yourself: '&cDu kannst keine Gegenstände von dir selbst kaufen!'
   cannot_sell_to_yourself: '&cDu kannst keine Artikel an dich sich selbst verkaufen!'
@@ -271,6 +273,14 @@ menus:
         name: '&eDorfbewohner umbenennen'
         lore:
           - '&7Klicke, um den Namen des Dorfbewohners zu ändern.'
+      #Change shopfront title item (admin shop only)
+      change_shopfront_title:
+        material: NAME_TAG
+        slot: 31
+        name: '&eShopfront-Titel ändern'
+        lore:
+          - '&7Klicke, um den Kisten-Titel'
+          - '&7dieses Shopfronts zu ändern'
       #Sell shop item
       sell_shop:
         material: FEATHER

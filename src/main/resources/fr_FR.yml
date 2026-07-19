@@ -64,6 +64,8 @@ messages:
   sold_item_as_owner: "&b%player%&7 a acheté &b%amount%x %item%&7 de vous pour &a%price%&7."
   change_name: "&bVeuillez taper le nom de la boutique dans le chat..."
   change_name_set: "&aNom défini avec succès : &r%name%&a."
+  change_shopfront_title: "&bVeuillez taper le titre de la boutique dans le chat..."
+  change_shopfront_title_set: "&aTitre défini avec succès : &r%title%&a."
   must_be_menulore: "&cVeuillez revenir à &e&nmenu lore&c pour vendre/acheter des articles !"
   cannot_buy_from_yourself: "&cVous ne pouvez pas acheter d'articles à vous-même !"
   cannot_sell_to_yourself: "&cVous ne pouvez pas vendre d'articles à vous-même !"
@@ -277,6 +279,14 @@ menus:
         name: "&eModifier le nom du villageois"
         lore:
           - "&7Cliquez pour changer le nom de votre villageois"
+      #Change shopfront title item (admin shop only)
+      change_shopfront_title:
+        material: NAME_TAG
+        slot: 31
+        name: "&eChanger le titre du shopfront"
+        lore:
+          - "&7Cliquez pour changer le titre du coffre"
+          - "&7de ce shopfront"
       # Vendre/abandonner la boutique
       sell_shop:
         material: FEATHER

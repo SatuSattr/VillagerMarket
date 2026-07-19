@@ -45,6 +45,7 @@ public abstract class VillagerShop {
     protected final EnumMap<ShopMenu, Menu> menus = new EnumMap<>(ShopMenu.class);
 
     protected String shopName;
+    protected String shopfrontTitle;
 
     protected final ShopfrontHolder shopfrontHolder;
     protected ShopStats shopStats;
@@ -70,6 +71,8 @@ public abstract class VillagerShop {
 
         this.shopName = config.getString("shop_name");
         this.shopName = (shopName == null ? entityInfo.getName() : shopName);
+        this.shopfrontTitle = config.getString("shopfront_title");
+        this.shopfrontTitle = (shopfrontTitle == null ? shopName : shopfrontTitle);
         this.duration = config.getString("duration");
         this.duration = (duration == null ? "infinite" : duration);
         this.timesRented = config.getInt("times_rented");
@@ -163,6 +166,7 @@ public abstract class VillagerShop {
         config.set("collected_money", collectedMoney);
         config.set("require_permission", requirePermission);
         config.set("shop_name", shopName);
+        config.set("shopfront_title", shopfrontTitle);
 
         shopStats.save();
         entityInfo.save();
@@ -337,6 +341,16 @@ public abstract class VillagerShop {
 
     public String getShopName() {
         return shopName;
+    }
+
+    public String getShopfrontTitle() {
+        return shopfrontTitle;
+    }
+
+    public void setShopfrontTitle(String title) {
+        shopfrontTitle = title;
+        shopfrontHolder.closeAll();
+        shopfrontHolder.load();
     }
 
     public void setShopName(String customName) {
