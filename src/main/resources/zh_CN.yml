@@ -748,11 +748,11 @@ menus:
     back_slot: 26
     size: 27
     confirm_slot: 13
-    confirm_yes_slot: 11
+    confirm_yes_slot: 18
     items:
       confirm_yes:
-        material: LIME_STAINED_GLASS_PANE
-        slot: 11
+        material: LIME_STAINED_GLASS
+        slot: 18
         name: "&a确认"
         lore:
           - "&7点击确认交易"
@@ -800,6 +800,62 @@ menus:
         slot: 22
         lore:
           - "&7点击切换到购买"
+
+    admin_shop:
+      buy_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - "%limit_lore%"
+        - ""
+        - "&f&7to buy"
+      sell_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - "%limit_lore%"
+        - ""
+        - "&f&7to sell"
+      trade_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - "%limit_lore%"
+        - ""
+        - "&f&7to trade"
+      command_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - "%limit_lore%"
+        - ""
+        - "&f&7to buy"
+    player_shop:
+      buy_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - ""
+        - "&f&7to buy"
+      sell_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - ""
+        - "&f&7to sell"
+      trade_lore:
+        - "&7Mode&f: %mode%"
+        - ""
+        - "&7Amount&f: &e%amount%"
+        - "&7Price&f: &f%price%"
+        - ""
+        - "&f&7to trade"
 
 
   #-------------------- Expired Storage --------------------#

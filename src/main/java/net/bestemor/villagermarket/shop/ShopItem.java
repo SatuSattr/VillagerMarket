@@ -492,6 +492,16 @@ public class ShopItem {
         return i;
     }
 
+    public ItemStack getConfirmYesItem(Player p, int amount, ItemMode mode) {
+        ItemStack i = ConfigManager.getItem("menus.buy_item.items.confirm_yes").build();
+        ItemMeta m = i.getItemMeta();
+        if (m != null) {
+            m.setLore(getLore("buy_item", mode, p, amount));
+            i.setItemMeta(m);
+        }
+        return i;
+    }
+
     public ItemStack getRawItem() {
         return item.clone();
     }

@@ -101,13 +101,13 @@ public class BuyItemMenu extends Menu {
     protected void onUpdate(MenuContent content) {
         int confirmSlot = ConfigManager.getInt("menus.buy_item.confirm_slot");
         int confirmYesSlot = ConfigManager.getInt("menus.buy_item.confirm_yes_slot");
-        ItemStack confirmItem = item.getCustomerItem(player, amount, mode);
 
-        // Display item — no action
-        content.setClickable(confirmSlot, Clickable.of(confirmItem, event -> {}));
+        // Display item — raw item with simple lore (amount + price only), no action
+        ItemStack displayItem = item.getCustomerItem(player, amount, mode);
+        content.setClickable(confirmSlot, Clickable.of(displayItem, event -> {}));
 
-        // YES button — executes the transaction
-        ItemStack yesItem = ConfigManager.getItem("menus.buy_item.items.confirm_yes").build();
+        // YES button — full lore with mode/amount/price/limit, executes transaction
+        ItemStack yesItem = item.getConfirmYesItem(player, amount, mode);
         content.setClickable(confirmYesSlot, Clickable.of(yesItem, event -> {
             Player player = (Player) event.getWhoClicked();
 
