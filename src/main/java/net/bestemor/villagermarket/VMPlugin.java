@@ -46,8 +46,8 @@ public class VMPlugin extends CorePlugin {
         ConfigManager.setPrefixPath("plugin_prefix");
         ConfigManager.setAddPrefixSpace(false);
 
-        protocolLibEnabled = Bukkit.getPluginManager().getPlugin("ProtocolLib") != null;
-        Bukkit.getLogger().info("[VillagerMarket] ProtocolLib: " + (protocolLibEnabled ? "found" : "not found — oversized stacks disabled"));
+        protocolLibEnabled = Bukkit.getPluginManager().getPlugin("packetevents") != null;
+        Bukkit.getLogger().info("[VillagerMarket] PacketEvents: " + (protocolLibEnabled ? "found" : "not found — oversized stacks disabled"));
 
         setupCommands();
 

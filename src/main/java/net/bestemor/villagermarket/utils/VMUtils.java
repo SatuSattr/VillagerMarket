@@ -1,8 +1,8 @@
 package net.bestemor.villagermarket.utils;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.events.PacketContainer;
+import com.github.retrooper.packetevents.PacketEvents;
+import com.github.retrooper.packetevents.wrapper.play.server.WrapperPlayServerSetSlot;
+import io.github.retrooper.packetevents.util.SpigotConversionUtil;
 import net.bestemor.core.config.ConfigManager;
 import net.bestemor.core.config.VersionUtils;
 import net.bestemor.villagermarket.VMPlugin;
@@ -240,27 +240,23 @@ public class VMUtils {
 
     /**
      * Sends a SET_SLOT packet to the player to display an item with amount > 64.
-     * No-op if ProtocolLib is not loaded.
+     * No-op if PacketEvents is not loaded.
      */
-    public static void sendOversizedSlot(Player player, int slot, ItemStack item, int amount) {
+    public static void sendOversizedSlot(Player player, int slot, org.bukkit.inventory.ItemStack item, int amount) {
         if (!VMPlugin.isProtocolLibEnabled()) return;
         try {
-            // Get the NMS container id via CraftInventoryView.getHandle().containerId
+            // Get NMS container id via reflection on CraftInventoryView
             Object craftView = player.getOpenInventory();
             Object handle = craftView.getClass().getMethod("getHandle").invoke(craftView);
             int containerId = (int) handle.getClass().getField("containerId").get(handle);
 
-            ItemStack sendItem = item.clone();
-            sendItem.setAmount(amount);
+            // Convert Bukkit ItemStack to PacketEvents ItemStack with the desired amount
+            org.bukkit.inventory.ItemStack sendBukkit = item.clone();
+            sendBukkit.setAmount(amount);
+            com.github.retrooper.packetevents.protocol.item.ItemStack peItem = SpigotConversionUtil.fromBukkitItemStack(sendBukkit);
 
-            PacketContainer packet = ProtocolLibrary.getProtocolManager()
-                    .createPacket(PacketType.Play.Server.SET_SLOT);
-            packet.getIntegers().write(0, containerId); // window id
-            packet.getIntegers().write(1, 0);           // state id
-            packet.getIntegers().write(2, slot);        // slot index
-            packet.getItemModifier().write(0, sendItem);
-
-            ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
+            WrapperPlayServerSetSlot packet = new WrapperPlayServerSetSlot(containerId, 0, slot, peItem);
+            PacketEvents.getAPI().getPlayerManager().sendPacket(player, packet);
         } catch (Exception e) {
             // Silently fail — display falls back to normal capped amount
         }

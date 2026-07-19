@@ -21,7 +21,7 @@ softdepend:
   - NBTApi
   - Lands
   - UltraEconomy
-  - ProtocolLib
+  - packetevents
 commands:
   vm:
     description: List all Villager Market commands
