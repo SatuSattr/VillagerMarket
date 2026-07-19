@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class MoveHereCommand implements ISubCommand {
 
@@ -26,8 +27,7 @@ public class MoveHereCommand implements ISubCommand {
             List<String> completions = new ArrayList<>();
 
             for (VillagerShop shop : plugin.getShopManager().getShops()) {
-                String shortUuid = shop.getEntityUUID().toString().substring(0, 8);
-                completions.add(shortUuid);
+                completions.add(shop.getEntityUUID().toString());
             }
 
             String input = args[1].toLowerCase();
@@ -52,16 +52,15 @@ public class MoveHereCommand implements ISubCommand {
             return;
         }
 
-        String identifier = args[1];
-        VillagerShop targetShop = null;
-
-        for (VillagerShop shop : plugin.getShopManager().getShops()) {
-            String uuid = shop.getEntityUUID().toString();
-            if (uuid.toLowerCase().startsWith(identifier.toLowerCase()) || uuid.equalsIgnoreCase(identifier)) {
-                targetShop = shop;
-                break;
-            }
+        UUID shopUUID;
+        try {
+            shopUUID = UUID.fromString(args[1]);
+        } catch (IllegalArgumentException e) {
+            player.sendMessage(ConfigManager.getMessage("messages.villager_shop_not_found"));
+            return;
         }
+
+        VillagerShop targetShop = plugin.getShopManager().getShop(shopUUID);
 
         if (targetShop == null) {
             player.sendMessage(ConfigManager.getMessage("messages.villager_shop_not_found"));
