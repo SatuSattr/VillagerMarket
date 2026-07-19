@@ -117,6 +117,10 @@ messages:
   max_name_length: "&c名称过长! 最大名称长度为 %limit% 个字符."
   clone_shop: "&7右键你需要复制的&b村民商店&7."
   shop_cloned: "&a村民商店已成功复制. 可输入命令 &e/vm move&a 来移动它."
+  #Placeholders: %shop%
+  movehere_success: "&a村民商店 &b%shop% &a已被移动到你的位置."
+  movehere_usage: "&c用法: &e/vm movehere <id>"
+  movehere_entity_not_found: "&c无法在世界中找到该村民实体. 它可能未被加载."
   set_size: "&7右键点击你想要设置大小的&b村民商店&7."
   size_set: "&a商店大小已设置为 &e%size%&a."
   #Placeholders: %amount%, %item%, %price%, %shop%

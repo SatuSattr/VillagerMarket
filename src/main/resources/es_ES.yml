@@ -117,6 +117,10 @@ messages:
   max_name_length: "&cEste nombre es demasiado largo! La longitud máxima del nombre es de %limit% caracteres."
   clone_shop: "&7Haz clic con el botón derecho en la &bVillager Shop &7 que quieras clonar"
   shop_cloned: "&aTienda de aldeanos clonada con éxito. Muévelo usando &e/vm move&a."
+  #Placeholders: %shop%
+  movehere_success: "&aLa Villager Shop &b%shop% &aha sido movida a tu ubicación."
+  movehere_usage: "&cUso: &e/vm movehere <id>"
+  movehere_entity_not_found: "&cNo se pudo encontrar la entidad Villager en el mundo. Puede que no esté cargada."
   set_size: "&7Haga clic con el botón derecho en la &bVillager Shop &7en la que desee establecer el tamaño."
   size_set: "&aTamaño establecido a &e%size%&a."
   #Placeholders: %amount%, %item%, %price%, %shop%

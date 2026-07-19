@@ -117,6 +117,10 @@ messages:
   max_name_length: "&cThis name is too long! Maximum name length is %limit% characters."
   clone_shop: "&7Right click the &bVillager Shop &7you want to clone."
   shop_cloned: "&aVillager Shop successfully cloned. Move it using &e/vm move&a."
+  #Placeholders: %shop%
+  movehere_success: "&aVillager Shop &b%shop% &ahas been moved to your location."
+  movehere_usage: "&cUsage: &e/vm movehere <id>"
+  movehere_entity_not_found: "&cCould not find the Villager entity in the world. It may not be loaded."
   set_size: "&7Right click the &bVillager Shop &7you want to set size for."
   size_set: "&aSize set to &e%size%&a."
   #Placeholders: %amount%, %item%, %price%, %shop%
