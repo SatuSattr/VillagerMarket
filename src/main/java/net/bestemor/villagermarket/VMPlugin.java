@@ -42,6 +42,7 @@ public class VMPlugin extends CorePlugin {
         Metrics metrics = new Metrics(this, 8922);
 
         ConfigManager.setPrefixPath("plugin_prefix");
+        ConfigManager.setAddPrefixSpace(false);
 
         setupCommands();
 

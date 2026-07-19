@@ -1,7 +1,7 @@
 #----------------------- General settings -----------------------#
 
 #Villager Market"s message prefix
-plugin_prefix: "&8[&aVM&8]&r"
+plugin_prefix: "&8[&aVM&8]&r "
 #Should configuration be auto-updated?
 auto_update: true
 #How much (%) should shop owner get refunded when selling shop
