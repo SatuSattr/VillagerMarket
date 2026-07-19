@@ -1,7 +1,11 @@
 package net.bestemor.villagermarket.utils;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketContainer;
 import net.bestemor.core.config.ConfigManager;
 import net.bestemor.core.config.VersionUtils;
+import net.bestemor.villagermarket.VMPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -235,9 +239,32 @@ public class VMUtils {
     }
 
     /**
-     * Play a sound from config. Supports both Bukkit Sound enums (e.g. ENTITY_VILLAGER_TRADE)
-     * and namespaced custom sounds (e.g. minecraft:clavate.sell).
+     * Sends a SET_SLOT packet to the player to display an item with amount > 64.
+     * No-op if ProtocolLib is not loaded.
      */
+    public static void sendOversizedSlot(Player player, int slot, ItemStack item, int amount) {
+        if (!VMPlugin.isProtocolLibEnabled()) return;
+        try {
+            // Get the NMS container id via CraftInventoryView.getHandle().containerId
+            Object craftView = player.getOpenInventory();
+            Object handle = craftView.getClass().getMethod("getHandle").invoke(craftView);
+            int containerId = (int) handle.getClass().getField("containerId").get(handle);
+
+            ItemStack sendItem = item.clone();
+            sendItem.setAmount(amount);
+
+            PacketContainer packet = ProtocolLibrary.getProtocolManager()
+                    .createPacket(PacketType.Play.Server.SET_SLOT);
+            packet.getIntegers().write(0, containerId); // window id
+            packet.getIntegers().write(1, 0);           // state id
+            packet.getIntegers().write(2, slot);        // slot index
+            packet.getItemModifier().write(0, sendItem);
+
+            ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
+        } catch (Exception e) {
+            // Silently fail — display falls back to normal capped amount
+        }
+    }
     public static void playSound(Player player, String soundKey, float volume, float pitch) {
         String soundValue = ConfigManager.getString(soundKey);
         if (soundValue == null || soundValue.isEmpty()) return;

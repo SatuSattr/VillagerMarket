@@ -33,6 +33,8 @@ public class VMPlugin extends CorePlugin {
     private ShopManager shopManager;
     private PlayerListener playerListener;
 
+    private static boolean protocolLibEnabled = false;
+
     private final Map<String, String> localizedMaterials = new HashMap<>();
 
     @Override
@@ -43,6 +45,9 @@ public class VMPlugin extends CorePlugin {
 
         ConfigManager.setPrefixPath("plugin_prefix");
         ConfigManager.setAddPrefixSpace(false);
+
+        protocolLibEnabled = Bukkit.getPluginManager().getPlugin("ProtocolLib") != null;
+        Bukkit.getLogger().info("[VillagerMarket] ProtocolLib: " + (protocolLibEnabled ? "found" : "not found — oversized stacks disabled"));
 
         setupCommands();
 
@@ -195,6 +200,10 @@ public class VMPlugin extends CorePlugin {
 
     public static Economy getEconomy() {
         return economy;
+    }
+
+    public static boolean isProtocolLibEnabled() {
+        return protocolLibEnabled;
     }
 
     public boolean isCitizensEnabled() {

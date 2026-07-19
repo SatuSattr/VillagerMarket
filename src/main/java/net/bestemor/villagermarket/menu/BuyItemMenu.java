@@ -11,6 +11,7 @@ import net.bestemor.villagermarket.shop.ItemMode;
 import net.bestemor.villagermarket.shop.ShopItem;
 import net.bestemor.villagermarket.shop.VillagerShop;
 import net.bestemor.villagermarket.utils.VMUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -104,9 +105,19 @@ public class BuyItemMenu extends Menu {
         int confirmYesSlot = ConfigManager.getInt("menus.buy_item.confirm_yes_slot");
 
         // Display item — raw item, no lore modification
-        ItemStack displayItem = item.getRawItem();
+        ItemStack displayItem = item.getRawItem().clone();
         displayItem.setAmount(Math.min(amount, item.getRawItem().getMaxStackSize()));
         content.setClickable(confirmSlot, Clickable.of(displayItem, event -> {}));
+
+        // If amount exceeds max stack size, send oversized packet 1 tick later
+        // (must be delayed so ProtocolLib fires after inventory update is sent)
+        if (amount > item.getRawItem().getMaxStackSize()) {
+            Bukkit.getScheduler().runTaskLater(VMPlugin.getPlugin(VMPlugin.class), () -> {
+                if (player.isOnline() && player.getOpenInventory() != null) {
+                    VMUtils.sendOversizedSlot(player, confirmSlot, displayItem, amount);
+                }
+            }, 1L);
+        }
 
         // YES button — full lore with mode/amount/price/limit, executes transaction
         ItemStack yesItem = item.getConfirmYesItem(player, amount, mode);
