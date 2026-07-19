@@ -136,6 +136,9 @@ sounds:
   collect_money: ENTITY_EXPERIENCE_ORB_PICKUP
   max_shops: BLOCK_ANVIL_DESTROY
   give_shop_item: ENTITY_ITEM_PICKUP
+  increase_amount: UI_BUTTON_CLICK
+  decrease_amount: UI_BUTTON_CLICK
+  mode_switch: UI_BUTTON_CLICK
 
 #----------------------- Other settings -----------------------#
 
