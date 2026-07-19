@@ -312,6 +312,9 @@ menus:
   #Placeholders: %expire%
   shopfront:
     title: "&8%shop%"
+    title_multipage: "&8%shop% | %page%/%total%"
+    title_detailed: "&8%shop%"
+    title_detailed_multipage: "&8%shop% | %page%/%total%"
     #Placeholders: %item_name%, %mode%
     item_name: "&f%item_name% %mode%"
     detail_suffix: "&8(详细)"
@@ -434,6 +437,7 @@ menus:
   #------------------ Edit Shopfront ------------------#
   edit_shopfront:
     title: "&8添加出售物品"
+    title_multipage: "&8添加出售物品 | %page%/%total%"
     #Placeholders: %item_name%, %mode%
     item_name: "&f%item_name% %mode%"
     modes:

@@ -326,6 +326,9 @@ menus:
   #Placeholders: %expire%
   shopfront:
     title: "&8%shop%"
+    title_multipage: "&8%shop% | %page%/%total%"
+    title_detailed: "&8%shop%"
+    title_detailed_multipage: "&8%shop% | %page%/%total%"
     #Placeholders : %item_name%, %mode%
     item_name: "&f%item_name% %mode%"
     detail_suffix: "&8(Détails)"
@@ -459,6 +462,7 @@ menus:
   #------------------ Modifier la façade de la boutique ------------------#
   edit_shopfront:
     title: "&8Ajouter des articles à vendre"
+    title_multipage: "&8Ajouter des articles à vendre | %page%/%total%"
     # Placeholders : %item_name%, %mode%
     item_name: "&f%item_name% %mode%"
     modes:

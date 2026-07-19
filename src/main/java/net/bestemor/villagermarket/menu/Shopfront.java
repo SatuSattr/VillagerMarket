@@ -67,23 +67,25 @@ public class Shopfront {
     }
 
     private String getEditorTitle() {
-        String editorTitle = ConfigManager.getString("menus.edit_shopfront.title")
+        String key = isInfinite
+                ? "menus.edit_shopfront.title_multipage"
+                : "menus.edit_shopfront.title";
+        return ConfigManager.getString(key)
                 .replace("%shop%", shop.getShopName())
-                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()));
-        if (isInfinite) {
-            editorTitle += " | " + (page + 1);
-        }
-        return editorTitle;
+                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()))
+                .replace("%page%", String.valueOf(page + 1))
+                .replace("%total%", String.valueOf(holder.getSize()));
     }
 
     private String getDetailedTitle() {
-        String detailedTitle = (ConfigManager.getString("menus.shopfront.title") + " " + ConfigManager.getString("menus.shopfront.detail_suffix"))
+        String key = isInfinite
+                ? "menus.shopfront.title_detailed_multipage"
+                : "menus.shopfront.title_detailed";
+        return ConfigManager.getString(key)
                 .replace("%shop%", shop.getShopName())
-                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()));
-        if (isInfinite) {
-            detailedTitle += " | " + (page + 1);
-        }
-        return detailedTitle;
+                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()))
+                .replace("%page%", String.valueOf(page + 1))
+                .replace("%total%", String.valueOf(holder.getSize()));
     }
 
     public void loadItemsFromConfig() {
@@ -144,12 +146,14 @@ public class Shopfront {
     }
 
     private Inventory getCustomerInventory(Player player) {
-        String customerTitle = ConfigManager.getString("menus.shopfront.title")
+        String key = isInfinite
+                ? "menus.shopfront.title_multipage"
+                : "menus.shopfront.title";
+        String customerTitle = ConfigManager.getString(key)
                 .replace("%shop%", shop.getShopName())
-                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()));
-        if (isInfinite) {
-            customerTitle += " | " + (page + 1);
-        }
+                .replace("%expire%", VMUtils.formatExpireDate(shop.getExpireDate()))
+                .replace("%page%", String.valueOf(page + 1))
+                .replace("%total%", String.valueOf(holder.getSize()));
 
         Inventory customerInventory = Bukkit.createInventory(null, size, customerTitle);
         for (Integer slot : items.keySet()) {
