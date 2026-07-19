@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -154,7 +155,7 @@ public class PlayerShop extends VillagerShop {
         }
         player.sendMessage(message.build());
 
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.buy_item"), 1, 1);
+        VMUtils.playSound(player, "sounds.buy_item", 1, 1);
         VMPlugin.log.add(new Date() + ": " + player.getName() + " bought " + amount + "x " + item.getType() + " from " + ownerName + " (" + price + ")");
     }
 
@@ -184,7 +185,7 @@ public class PlayerShop extends VillagerShop {
         shopStats.addSpent(price.doubleValue());
 
 
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.sell_item"), 0.5f, 1);
+        VMUtils.playSound(player, "sounds.sell_item", 0.5f, 1);
         player.sendMessage(ConfigManager.getCurrencyBuilder("messages.money_currently").replaceCurrency("%amount%", moneyLeft).build());
 
         if (taxAmount.doubleValue() > 0) {
@@ -228,7 +229,7 @@ public class PlayerShop extends VillagerShop {
         Economy economy = VMPlugin.getEconomy();
         economy.depositPlayer(player, collectedMoney.doubleValue());
         player.sendMessage(ConfigManager.getCurrencyBuilder("messages.collected_money").replaceCurrency("%amount%", collectedMoney).addPrefix().build());
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.collect_money"), 1, 1);
+        VMUtils.playSound(player, "sounds.collect_money", 1, 1);
         super.collectedMoney = BigDecimal.valueOf(0);
         super.updateMenu(ShopMenu.EDIT_SHOP);
     }
@@ -314,7 +315,7 @@ public class PlayerShop extends VillagerShop {
 
         if (offlinePlayer.isOnline()) {
             Player player = (Player) offlinePlayer;
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.expired"), 1, 1);
+            VMUtils.playSound(player, "sounds.expired", 1, 1);
             player.sendMessage(ConfigManager.getMessage("messages.expired"));
         }
 

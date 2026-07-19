@@ -279,12 +279,12 @@ public class Shopfront {
             }
             if (isInfinite && event.getRawSlot() == 50 && page + 1 < shop.getShopfrontHolder().getSize()) {
                 holder.open(player, type, page + 1);
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 return;
             }
             if (isInfinite && event.getRawSlot() == 48 && page != 0) {
                 holder.open(player, type, page - 1);
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 return;
             }
 
@@ -297,7 +297,7 @@ public class Shopfront {
                     owner = player.hasPermission("villagermarket.admin");
                 }
 
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.back"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.back", 0.5f, 1);
 
                 if (type == Type.EDITOR) {
                     shop.openInventory(player, ShopMenu.EDIT_SHOP);
@@ -345,7 +345,7 @@ public class Shopfront {
                             event.getView().close();
                         } else {
                             if (shopItem != null) {
-                                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                                 shopItem.openEditor(player, shop, page);
                             }
                         }
@@ -436,7 +436,7 @@ public class Shopfront {
                     player.sendMessage(ConfigManager.getMessage("messages.add_successful"));
 
                     open(player, Type.EDITOR);
-                    player.playSound(player.getLocation(), ConfigManager.getSound("sounds.add_item"), 0.5f, 1);
+                    VMUtils.playSound(player, "sounds.add_item", 0.5f, 1);
                     CreateShopItemsEvent createShopItemsEvent = new CreateShopItemsEvent(player, shop, shopItem);
                     Bukkit.getPluginManager().callEvent(createShopItemsEvent);
 

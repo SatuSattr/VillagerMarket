@@ -54,14 +54,14 @@ public class StorageMenu extends Menu {
             if (page != 0) {
                 content.setClickable(48, Clickable.of(ConfigManager.getItem("items.previous").build(), event -> {
                     Player player = (Player) event.getWhoClicked();
-                    player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                    VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                     holder.open(player, page - 1);
                 }));
             }
             if (page != holder.getPages() - 1) {
                 content.setClickable(50, Clickable.of(ConfigManager.getItem("items.next").build(), event -> {
                     Player player = (Player) event.getWhoClicked();
-                    player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                    VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                     holder.open(player, page + 1);
                 }));
             }
@@ -69,7 +69,7 @@ public class StorageMenu extends Menu {
         content.setClickable(inventorySize - 1, Clickable.of(ConfigManager.getItem("items.back").build(), event -> {
             Player player = (Player) event.getWhoClicked();
             this.holder.back(player);
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.back"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.back", 0.5f, 1);
         }));
     }
 

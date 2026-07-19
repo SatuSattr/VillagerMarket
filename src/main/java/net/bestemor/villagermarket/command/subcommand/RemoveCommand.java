@@ -5,6 +5,7 @@ import net.bestemor.core.config.ConfigManager;
 import net.bestemor.villagermarket.VMPlugin;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class RemoveCommand implements ISubCommand {
         player.sendMessage(ConfigManager.getMessage("messages.remove_villager"));
         plugin.getPlayerListener().addClickListener(player.getUniqueId(), shop -> {
             player.sendMessage(ConfigManager.getMessage("messages.villager_removed"));
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.remove_villager"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.remove_villager", 0.5f, 1);
             plugin.getShopManager().removeShop(shop.getEntityUUID());
         });
     }

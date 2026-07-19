@@ -46,7 +46,7 @@ public class BuyItemMenu extends Menu {
         ItemStack back = ConfigManager.getItem("items.back").build();
         content.setClickable(ConfigManager.getInt("menus.buy_item.back_slot"), Clickable.of(back, event -> {
             player.closeInventory();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.back"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.back", 0.5f, 1);
             shop.getShopfrontHolder().open(player, Shopfront.Type.CUSTOMER, page);
         }));
 

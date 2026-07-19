@@ -4,8 +4,11 @@ import net.bestemor.core.config.ConfigManager;
 import net.bestemor.core.config.VersionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -228,6 +231,27 @@ public class VMUtils {
         } else {
             long days = secondsUntil / 86400;
             return days + " " + ConfigManager.getString(days == 1 ? "time.day" : "time.days");
+        }
+    }
+
+    /**
+     * Play a sound from config. Supports both Bukkit Sound enums (e.g. ENTITY_VILLAGER_TRADE)
+     * and namespaced custom sounds (e.g. minecraft:clavate.sell).
+     */
+    public static void playSound(Player player, String soundKey, float volume, float pitch) {
+        String soundValue = ConfigManager.getString(soundKey);
+        if (soundValue == null || soundValue.isEmpty()) return;
+        Location location = player.getLocation();
+        if (soundValue.contains(":")) {
+            // Custom / namespaced sound — use String overload
+            player.playSound(location, soundValue, volume, pitch);
+        } else {
+            // Bukkit enum sound
+            try {
+                player.playSound(location, Sound.valueOf(soundValue.toUpperCase()), volume, pitch);
+            } catch (IllegalArgumentException ignored) {
+                // Invalid sound name, silently skip
+            }
         }
     }
 }

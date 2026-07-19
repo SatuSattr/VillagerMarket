@@ -11,6 +11,7 @@ import net.bestemor.core.menu.MenuConfig;
 import net.bestemor.core.menu.MenuContent;
 import net.bestemor.core.menu.PlacedClickable;
 import org.bukkit.entity.Player;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 public class ConfirmActionMenu extends Menu {
 
@@ -33,12 +34,12 @@ public class ConfirmActionMenu extends Menu {
 
         content.setPlaced(PlacedClickable.fromConfig("menus.confirm_action.items.accept", event -> {
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
             accept.run();
         }));
         content.setPlaced(PlacedClickable.fromConfig("menus.confirm_action.items.cancel", event -> {
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
             cancel.run();
         }));
     }

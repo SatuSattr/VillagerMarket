@@ -13,6 +13,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -73,7 +74,7 @@ public class BuyShopMenu extends Menu {
                         .replace("%current%", String.valueOf(owned))
                         .replace("%max%", String.valueOf(max)));
 
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.max_shops"), 1, 1);
+                VMUtils.playSound(player, "sounds.max_shops", 1, 1);
                 return;
             }
             if (economy.getBalance(player) < shop.getCost()) {
@@ -92,7 +93,7 @@ public class BuyShopMenu extends Menu {
 
             shop.updateMenu(ShopMenu.EDIT_SHOP);
 
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.buy_shop"), 1, 1);
+            VMUtils.playSound(player, "sounds.buy_shop", 1, 1);
 
             VMPlugin.log.add(new Date() + ": " + player.getName() + " bought shop for " + shop.getCost());
             shop.openInventory(player, ShopMenu.EDIT_SHOP);

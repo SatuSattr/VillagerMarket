@@ -50,7 +50,7 @@ public class EditItemMenu extends Menu {
         int backSlot = ConfigManager.getInt("menus.edit_item.back_slot");
         content.setClickable(backSlot, Clickable.fromConfig("items.back", event -> {
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.back"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.back", 0.5f, 1);
             shop.getShopfrontHolder().open(player, Shopfront.Type.EDITOR, this.page);
         }));
 
@@ -59,7 +59,7 @@ public class EditItemMenu extends Menu {
 
             new ConfirmActionMenu(() -> {
                 shop.getShopfrontHolder().removeItem(item.getSlot());
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.remove_item"), 1, 1);
+                VMUtils.playSound(player, "sounds.remove_item", 1, 1);
                 shop.openInventory(player, ShopMenu.EDIT_SHOPFRONT);
                 DeleteShopItemEvent deleteShopItemEvent = new DeleteShopItemEvent(player, this.shop, item);
                 Bukkit.getPluginManager().callEvent(deleteShopItemEvent);
@@ -182,14 +182,14 @@ public class EditItemMenu extends Menu {
         if (ConfigManager.getBoolean("allow_custom_amount")) {
             content.setPlaced(PlacedClickable.fromConfig(p + "custom_amount_" + (item.isAllowCustomAmount() ? "enabled" : "disabled"), event -> {
                 Player player = (Player) event.getWhoClicked();
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 item.setAllowCustomAmount(!item.isAllowCustomAmount());
                 update();
             }));
         }
         content.setClickable(ConfigManager.getInt(p + "price.slot"), Clickable.of(priceItem, event -> {
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
             if (event.getCursor() != null && event.getCursor().getType() != Material.AIR) {
                 //Set Permissions
                 if (player.hasPermission("villagermarket.set_trade_type")) {
@@ -335,7 +335,7 @@ public class EditItemMenu extends Menu {
     private void handleLimit(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         if (shop instanceof AdminShop && event.getClick() == ClickType.RIGHT) {
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
             item.cycleLimitMode();
             update();
             return;
@@ -364,7 +364,7 @@ public class EditItemMenu extends Menu {
                 });
                 break;
             case RIGHT:
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 item.clearLimits();
                 player.sendMessage(ConfigManager.getMessage("messages.limits_cleared"));
         }

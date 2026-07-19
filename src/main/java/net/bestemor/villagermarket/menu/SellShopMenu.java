@@ -38,8 +38,8 @@ public class SellShopMenu extends Menu {
             PlayerShop playerShop = (PlayerShop) shop;
 
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.sell_shop"), 0.5f, 1);
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.menu_click"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.sell_shop", 0.5f, 1);
+            VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
 
             playerShop.abandon();
             if (playerShop.getCost() != -1) {

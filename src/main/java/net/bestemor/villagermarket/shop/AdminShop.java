@@ -10,6 +10,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.io.File;
 import java.math.BigDecimal;
@@ -68,7 +69,7 @@ public class AdminShop extends VillagerShop {
         BuyShopItemsEvent buyShopItemsEvent = new BuyShopItemsEvent(player, this, item, amount);
         Bukkit.getPluginManager().callEvent(buyShopItemsEvent);
 
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.buy_item"), 1, 1);
+        VMUtils.playSound(player, "sounds.buy_item", 1, 1);
 
         VMPlugin.log.add(new Date() + ": " + player.getName() + " bought " + amount + "x " + item.getType() + " from Admin Shop " + "(" + price.toPlainString() + ")");
 
@@ -102,7 +103,7 @@ public class AdminShop extends VillagerShop {
         SellShopItemsEvent sellShopItemsEvent = new SellShopItemsEvent(player, this, item, amount);
         Bukkit.getPluginManager().callEvent(sellShopItemsEvent);
 
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.sell_item"), 0.5f, 1);
+        VMUtils.playSound(player, "sounds.sell_item", 0.5f, 1);
 
         String currency = config.getString("currency");
         String valueCurrency = (config.getBoolean("currency_before") ? currency + price : price + currency);

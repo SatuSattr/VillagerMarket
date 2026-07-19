@@ -11,6 +11,7 @@ import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -70,7 +71,7 @@ public class EditShopMenu extends Menu {
                 playerShop.increaseTime();
                 shop.updateMenu(ShopMenu.EDIT_SHOP);
 
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.increase_time"), 1, 1);
+                VMUtils.playSound(player, "sounds.increase_time", 1, 1);
             });
 
             content.setClickable(ConfigManager.getInt("menus.edit_shop.items.increase_time.slot"), increaseTime);

@@ -182,7 +182,7 @@ public class PlayerListener implements Listener {
                     .replace("%current%", String.valueOf(owned))
                     .replace("%max%", String.valueOf(max)));
 
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.max_shops"), 1, 1);
+            VMUtils.playSound(player, "sounds.max_shops", 1, 1);
             return;
         }
 
@@ -279,7 +279,7 @@ public class PlayerListener implements Listener {
             Bukkit.getLogger().severe(ChatColor.RED + "[VillagerMarket] Unable to spawn Villager! Does WorldGuard deny mobs spawn?");
         }
 
-        player.playSound(clickedLoc, ConfigManager.getSound("sounds.create_shop"), 1, 1);
+        VMUtils.playSound(player, "sounds.create_shop", 1, 1);
         if (itemStack.getAmount() > 1) {
             itemStack.setAmount(itemStack.getAmount() - 1);
         } else {

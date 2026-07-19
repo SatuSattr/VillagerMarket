@@ -126,7 +126,7 @@ public class CreateCommand implements ISubCommand {
         }
 
         plugin.getShopManager().createShopConfig(entity.getUniqueId(), storageSize, shopSize, cost, type.toUpperCase(Locale.ROOT), duration);
-        player.playSound(player.getLocation(), ConfigManager.getSound("sounds.create_shop"), 1, 1);
+        VMUtils.playSound(player, "sounds.create_shop", 1, 1);
     }
 
     private boolean canConvert(String string) {

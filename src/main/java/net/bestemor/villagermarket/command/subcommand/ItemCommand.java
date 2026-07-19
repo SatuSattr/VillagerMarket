@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import net.bestemor.villagermarket.utils.VMUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public class ItemCommand implements ISubCommand {
             amount = Integer.parseInt(args[5]);
         }
         target.getInventory().addItem(plugin.getShopManager().getShopItem(plugin, shopSize, storageSize, amount));
-        target.playSound(target.getLocation(), ConfigManager.getSound("sounds.give_shop_item"), 1, 1);
+        VMUtils.playSound(target, "sounds.give_shop_item", 1, 1);
     }
 
     private boolean canConvert(String string) {

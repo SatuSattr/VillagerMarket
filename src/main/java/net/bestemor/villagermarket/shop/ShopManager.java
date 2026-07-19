@@ -146,7 +146,7 @@ public class ShopManager {
             }
         }
 
-        p.playSound(p.getLocation(), ConfigManager.getSound("sounds.open_shop"), 0.5f, 1);
+        VMUtils.playSound(p, "sounds.open_shop", 0.5f, 1);
     }
 
     public void resetShopEntity(UUID uuid) {

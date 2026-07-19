@@ -38,7 +38,7 @@ public class EditVillagerMenu extends Menu {
                 Player player = (Player) event.getWhoClicked();
                 shop.setProfession(profession);
                 event.getView().close();
-                player.playSound(player.getLocation(), ConfigManager.getSound("sounds.change_profession"), 0.5f, 1);
+                VMUtils.playSound(player, "sounds.change_profession", 0.5f, 1);
             }));
         }
         if (plugin.isCitizensEnabled()) {
@@ -61,7 +61,7 @@ public class EditVillagerMenu extends Menu {
         int backSlot = ConfigManager.getInt("menus.edit_villager.back_slot");
         content.setClickable(backSlot, Clickable.fromConfig("items.back", event -> {
             Player player = (Player) event.getWhoClicked();
-            player.playSound(player.getLocation(), ConfigManager.getSound("sounds.back"), 0.5f, 1);
+            VMUtils.playSound(player, "sounds.back", 0.5f, 1);
             shop.openInventory(player, ShopMenu.EDIT_SHOP);
         }));
     }
