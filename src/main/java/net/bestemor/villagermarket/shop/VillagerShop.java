@@ -344,7 +344,7 @@ public abstract class VillagerShop {
     }
 
     public String getShopfrontTitle() {
-        return shopfrontTitle;
+        return (shopfrontTitle == null || shopfrontTitle.isBlank()) ? shopName : shopfrontTitle;
     }
 
     public void setShopfrontTitle(String title) {

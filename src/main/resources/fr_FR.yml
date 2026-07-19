@@ -335,8 +335,8 @@ menus:
   #-------------------- Vitrine --------------------#
   #Placeholders: %expire%
   shopfront:
-    title: "&8%shop%"
-    title_multipage: "&8%shop% | %page%/%total%"
+    title: "&8%title%"
+    title_multipage: "&8%title% | %page%/%total%"
     title_detailed: "&8%shop%"
     title_detailed_multipage: "&8%shop% | %page%/%total%"
     #Placeholders : %item_name%, %mode%
