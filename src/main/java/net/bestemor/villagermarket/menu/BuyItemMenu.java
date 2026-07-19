@@ -102,8 +102,9 @@ public class BuyItemMenu extends Menu {
         int confirmSlot = ConfigManager.getInt("menus.buy_item.confirm_slot");
         int confirmYesSlot = ConfigManager.getInt("menus.buy_item.confirm_yes_slot");
 
-        // Display item — raw item with simple lore (amount + price only), no action
-        ItemStack displayItem = item.getCustomerItem(player, amount, mode);
+        // Display item — raw item, no lore modification
+        ItemStack displayItem = item.getRawItem();
+        displayItem.setAmount(Math.min(amount, item.getRawItem().getMaxStackSize()));
         content.setClickable(confirmSlot, Clickable.of(displayItem, event -> {}));
 
         // YES button — full lore with mode/amount/price/limit, executes transaction

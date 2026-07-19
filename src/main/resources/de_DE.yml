@@ -818,7 +818,7 @@ menus:
         - "&7Price&f: &f%price%"
         - "%limit_lore%"
         - ""
-        - "&f&7to buy"
+        - "&7>> &fClick to buy"
       sell_lore:
         - "&7Mode&f: %mode%"
         - ""
@@ -826,7 +826,7 @@ menus:
         - "&7Price&f: &f%price%"
         - "%limit_lore%"
         - ""
-        - "&f&7to sell"
+        - "&7>> &fClick to sell"
       trade_lore:
         - "&7Mode&f: %mode%"
         - ""
@@ -834,7 +834,7 @@ menus:
         - "&7Price&f: &f%price%"
         - "%limit_lore%"
         - ""
-        - "&f&7to trade"
+        - "&7>> &fClick to trade"
       command_lore:
         - "&7Mode&f: %mode%"
         - ""
@@ -842,7 +842,7 @@ menus:
         - "&7Price&f: &f%price%"
         - "%limit_lore%"
         - ""
-        - "&f&7to buy"
+        - "&7>> &fClick to buy"
     player_shop:
       buy_lore:
         - "&7Mode&f: %mode%"
@@ -850,21 +850,21 @@ menus:
         - "&7Amount&f: &e%amount%"
         - "&7Price&f: &f%price%"
         - ""
-        - "&f&7to buy"
+        - "&7>> &fClick to buy"
       sell_lore:
         - "&7Mode&f: %mode%"
         - ""
         - "&7Amount&f: &e%amount%"
         - "&7Price&f: &f%price%"
         - ""
-        - "&f&7to sell"
+        - "&7>> &fClick to sell"
       trade_lore:
         - "&7Mode&f: %mode%"
         - ""
         - "&7Amount&f: &e%amount%"
         - "&7Price&f: &f%price%"
         - ""
-        - "&f&7to trade"
+        - "&7>> &fClick to trade"
   
   
   #-------------------- Expired Storage --------------------#
