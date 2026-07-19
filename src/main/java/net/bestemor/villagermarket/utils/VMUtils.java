@@ -248,7 +248,32 @@ public class VMUtils {
             // Get NMS container id via reflection on CraftInventoryView
             Object craftView = player.getOpenInventory();
             Object handle = craftView.getClass().getMethod("getHandle").invoke(craftView);
-            int containerId = (int) handle.getClass().getField("containerId").get(handle);
+
+            // Try multiple possible field names across MC versions
+            int containerId = -1;
+            for (String fieldName : new String[]{"containerId", "j", "windowId"}) {
+                try {
+                    java.lang.reflect.Field f = handle.getClass().getField(fieldName);
+                    containerId = (int) f.get(handle);
+                    break;
+                } catch (NoSuchFieldException ignored) {}
+            }
+            if (containerId == -1) {
+                // fallback: scan all int fields for plausible container id (1-100)
+                for (java.lang.reflect.Field f : handle.getClass().getDeclaredFields()) {
+                    if (f.getType() == int.class) {
+                        f.setAccessible(true);
+                        int val = (int) f.get(handle);
+                        if (val > 0 && val < 100) {
+                            containerId = val;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (containerId == -1) containerId = 1; // last resort
+
+            Bukkit.getLogger().info("[VM-DEBUG] sendOversizedSlot: slot=" + slot + " amount=" + amount + " containerId=" + containerId);
 
             // Convert Bukkit ItemStack to PacketEvents ItemStack with the desired amount
             org.bukkit.inventory.ItemStack sendBukkit = item.clone();
@@ -258,7 +283,7 @@ public class VMUtils {
             WrapperPlayServerSetSlot packet = new WrapperPlayServerSetSlot(containerId, 0, slot, peItem);
             PacketEvents.getAPI().getPlayerManager().sendPacket(player, packet);
         } catch (Exception e) {
-            // Silently fail — display falls back to normal capped amount
+            Bukkit.getLogger().warning("[VM-DEBUG] sendOversizedSlot failed: " + e.getClass().getSimpleName() + ": " + e.getMessage());
         }
     }
     public static void playSound(Player player, String soundKey, float volume, float pitch) {
