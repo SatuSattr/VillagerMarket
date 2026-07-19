@@ -53,23 +53,28 @@ public class BuyItemMenu extends Menu {
         if (item.isAllowCustomAmount()) {
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.increase_one", event -> {
                 amount++;
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.decrease_one", event -> {
                 amount = Math.max(amount - 1, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.increase_stack", event -> {
                 amount += 64;
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.decrease_stack", event -> {
                 amount = Math.max(amount - 64, 1);
+                VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.increase_max", event -> {
                 if (amount != getMaxAmount()) {
                     amount = getMaxAmount();
+                    VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                     update();
                 }
             }));
