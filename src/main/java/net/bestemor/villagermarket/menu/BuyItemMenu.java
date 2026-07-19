@@ -52,22 +52,30 @@ public class BuyItemMenu extends Menu {
 
         if (item.isAllowCustomAmount()) {
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.increase_one", event -> {
-                amount++;
+                int newAmount = Math.min(amount + 1, item.getRawItem().getMaxStackSize());
+                if (newAmount == amount) return;
+                amount = newAmount;
                 VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.decrease_one", event -> {
-                amount = Math.max(amount - 1, 1);
+                int newAmount = Math.max(amount - 1, 1);
+                if (newAmount == amount) return;
+                amount = newAmount;
                 VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.increase_stack", event -> {
-                amount += 64;
+                int newAmount = Math.min(amount + 64, item.getRawItem().getMaxStackSize());
+                if (newAmount == amount) return;
+                amount = newAmount;
                 VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
             content.setPlaced(PlacedClickable.fromConfig("menus.buy_item.items.decrease_stack", event -> {
-                amount = Math.max(amount - 64, 1);
+                int newAmount = Math.max(amount - 64, 1);
+                if (newAmount == amount) return;
+                amount = newAmount;
                 VMUtils.playSound(player, "sounds.menu_click", 0.5f, 1);
                 update();
             }));
