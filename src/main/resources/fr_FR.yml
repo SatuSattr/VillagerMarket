@@ -180,7 +180,7 @@ stats_message:
 items:
   back:
     name: "&c&lRetour"
-    material: RED_STAINED_GLASS_PANE
+    material: RED_STAINED_GLASS
   filler:
     name: ""
     material: GRAY_STAINED_GLASS_PANE
@@ -780,15 +780,15 @@ menus:
     title_trade: "&8Échanger objet"
     title_command: "&8Acheter commande"
     filler_slots: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
-    back_slot: 26
+    back_slot: 18
     size: 27
     confirm_slot: 13
-    confirm_yes_slot: 18
+    confirm_yes_slot: 26
     items:
       confirm_yes:
         material: LIME_STAINED_GLASS
-        slot: 18
-        name: "&aOui"
+        slot: 26
+        name: "&a&lOui"
         lore:
           - "&7Cliquez pour confirmer la transaction"
       increase_one:
