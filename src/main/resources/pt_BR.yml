@@ -176,7 +176,7 @@ stats_message:
 items:
   back:
     name: "&c&lVoltar"
-    material: ARROW
+    material: RED_STAINED_GLASS_PANE
   filler:
     name: ""
     material: GRAY_STAINED_GLASS_PANE
@@ -758,7 +758,14 @@ menus:
     back_slot: 26
     size: 27
     confirm_slot: 13
+    confirm_yes_slot: 11
     items:
+      confirm_yes:
+        material: LIME_STAINED_GLASS_PANE
+        slot: 11
+        name: "&aSim"
+        lore:
+          - "&7Clique para confirmar a transação"
       increase_one:
         material: LIME_TERRACOTTA
         slot: 15

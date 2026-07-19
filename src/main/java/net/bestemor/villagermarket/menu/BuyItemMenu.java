@@ -100,9 +100,15 @@ public class BuyItemMenu extends Menu {
     @Override
     protected void onUpdate(MenuContent content) {
         int confirmSlot = ConfigManager.getInt("menus.buy_item.confirm_slot");
+        int confirmYesSlot = ConfigManager.getInt("menus.buy_item.confirm_yes_slot");
         ItemStack confirmItem = item.getCustomerItem(player, amount, mode);
 
-        content.setClickable(confirmSlot, Clickable.of(confirmItem, event -> {
+        // Display item — no action
+        content.setClickable(confirmSlot, Clickable.of(confirmItem, event -> {}));
+
+        // YES button — executes the transaction
+        ItemStack yesItem = ConfigManager.getItem("menus.buy_item.items.confirm_yes").build();
+        content.setClickable(confirmYesSlot, Clickable.of(yesItem, event -> {
             Player player = (Player) event.getWhoClicked();
 
             if (item.getMode() == ItemMode.COMMAND && shop instanceof AdminShop adminShop) {
